@@ -1,18 +1,20 @@
-import { useState } from 'react'
 import './App.css'
 
-function App(){
+function Statistics(){
   return (
     <div>
-
-      <h1>Internship Application Tracker</h1>
-
-      <h2>Statistics</h2>
+       <h2>Statistics</h2>
 
       <p>Total Applications: 3</p>
       <p>Interviews: 1</p>
       <p>Offers: 0</p>
+    </div>
+  )
+}
 
+function ApplicationForm(){
+  return(
+    <div>
       <h2>Form</h2>
 
       <div>
@@ -49,6 +51,19 @@ function App(){
       <div>
         <button>Add Application</button>
       </div>
+    </div>
+  )
+}
+
+function App(){
+  return (
+    <div>
+
+      <h1>Internship Application Tracker</h1>
+
+      <Statistics />
+
+      <ApplicationForm />
 
       <h2>Search/Filters</h2>
 
@@ -82,4 +97,4 @@ function App(){
   )
 }
 
-export default VisualAreas
+export default App
