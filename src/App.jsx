@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-function VisualAreas(){
+function App(){
   return (
     <div>
 
@@ -16,24 +16,24 @@ function VisualAreas(){
       <h2>Form</h2>
 
       <div>
-        <label>Company</label>
-        <input
+        <label htmlFor= "company">Company</label>
+        <input id ="company"
           type="text"
           placeholder="Enter something"
         />
       </div>
 
       <div>
-        <label>Position</label>
-        <input
+        <label htmlFor= "position">Position</label>
+        <input id="position"
           type="text"
           placeholder="Enter something"
         />
       </div>
 
       <div>
-        <label>Status</label>
-        <select>
+        <label htmlFor= "status">Status</label>
+        <select id="status">
           <option>Applied</option>
           <option>Interview</option>
           <option>Offer</option>
@@ -42,8 +42,8 @@ function VisualAreas(){
       </div>
 
       <div>
-        <lable>Date</lable>
-        <input type="date" />
+        <label htmlFor="date">Date</label>
+        <input id="date" type="date" />
       </div>
 
       <div>
@@ -53,13 +53,13 @@ function VisualAreas(){
       <h2>Search/Filters</h2>
 
       <div>
-        <label>Search</label>
-        <input type="text" />
+        <label htmlFor="search">Search</label>
+        <input id="search" type="text" />
       </div>
 
       <div>
-        <label>Filter</label>
-        <select>
+        <label htmlFor="filter">Filter</label>
+        <select id="filter">
           <option>All</option>
           <option>Applied</option>
           <option>Interview</option>
@@ -69,6 +69,13 @@ function VisualAreas(){
       </div>
 
       <h2>ApplicationsList</h2>
+
+      <div>
+        <h3>Shopify</h3>
+        <p>Software Developer Intern</p>
+        <p>Applied</p>
+        <p>August 30</p>
+      </div>
 
     </div>
     
