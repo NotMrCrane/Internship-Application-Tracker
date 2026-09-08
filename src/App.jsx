@@ -1,5 +1,5 @@
 import './App.css'
-import {useState} from React
+import {useState} from "react"
 
 function Statistics(){
   return (
@@ -14,6 +14,7 @@ function Statistics(){
 }
 
 function ApplicationForm(){
+  const [company,setCompany] = useState("")
   return(
     <div>
       <h2>Form</h2>
@@ -23,7 +24,10 @@ function ApplicationForm(){
         <input id ="company"
           type="text"
           placeholder="Enter something"
+          value = {company}
+          onChange={(event) => setCompany(event.target.value)}
         />
+        <p>Current company: {company}</p>
       </div>
 
       <div>
@@ -57,6 +61,15 @@ function ApplicationForm(){
 }
 
 function App(){
+  const [applications, setApplications] = useState([
+  {
+    id: 1,
+    company: "Shopify",
+    position: "Software Developer Intern",
+    status: "Applied",
+    date: "2026-08-30"
+  }
+])
   return (
     <div>
 
@@ -86,12 +99,14 @@ function App(){
 
       <h2>ApplicationsList</h2>
 
-      <div>
-        <h3>Shopify</h3>
-        <p>Software Developer Intern</p>
-        <p>Applied</p>
-        <p>August 30</p>
-      </div>
+      {applications.map((application) => (
+        <div key={application.id}>
+        <h3>{application.company}</h3>
+        <p>{application.position}</p>
+        <p>{application.status}</p>
+        <p>{application.date}</p>
+        </div>
+))}
 
     </div>
     
