@@ -13,10 +13,28 @@ function Statistics(){
   )
 }
 
-function ApplicationForm(){
+function ApplicationForm({ addApplication }) {
   const [company,setCompany] = useState("")
+  const [position, setPosition] = useState("")
+  const [status, setStatus] = useState("Applied")
+  const [date, setDate] = useState("")  
+
+  function handleSubmit(event) {
+  event.preventDefault()
+
+  const newApplication = {
+    id: Date.now(),
+    company: company,
+    position: position,
+    status: status,
+    date: date
+  }
+
+  addApplication(newApplication)
+}
+
   return(
-    <div>
+    <form onSubmit={handleSubmit}>
       <h2>Form</h2>
 
       <div>
@@ -27,7 +45,6 @@ function ApplicationForm(){
           value = {company}
           onChange={(event) => setCompany(event.target.value)}
         />
-        <p>Current company: {company}</p>
       </div>
 
       <div>
@@ -35,28 +52,36 @@ function ApplicationForm(){
         <input id="position"
           type="text"
           placeholder="Enter something"
+          value = {position}
+          onChange={(event) => setPosition(event.target.value)}
         />
       </div>
 
       <div>
         <label htmlFor= "status">Status</label>
-        <select id="status">
+        <select id="status"
+          value = {status}
+          onChange={(event) => setStatus(event.target.value)}>
           <option>Applied</option>
           <option>Interview</option>
           <option>Offer</option>
           <option>Rejected</option>
+          
         </select>
       </div>
 
       <div>
         <label htmlFor="date">Date</label>
-        <input id="date" type="date" />
+        <input id="date" type="date" 
+        value = {date}
+        onChange={(event) => setDate(event.target.value)}/>
+        
       </div>
 
       <div>
-        <button>Add Application</button>
+        <button type="submit">Add Application</button>
       </div>
-    </div>
+    </form>
   )
 }
 
@@ -70,6 +95,14 @@ function App(){
     date: "2026-08-30"
   }
 ])
+
+function addApplication(newApplication) {
+    setApplications((previousApplications) => [
+      ...previousApplications,
+      newApplication
+    ])
+  }
+
   return (
     <div>
 
@@ -77,7 +110,7 @@ function App(){
 
       <Statistics />
 
-      <ApplicationForm />
+      <ApplicationForm addApplication={addApplication} />
 
       <h2>Search/Filters</h2>
 
