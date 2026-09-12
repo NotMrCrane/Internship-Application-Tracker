@@ -31,6 +31,12 @@ function ApplicationForm({ addApplication }) {
   }
 
   addApplication(newApplication)
+
+  setCompany("")
+  setPosition("")
+  setStatus("Applied")
+  setDate("")
+
 }
 
   return(
@@ -85,6 +91,19 @@ function ApplicationForm({ addApplication }) {
   )
 }
 
+function Application({ application }) {
+  return (
+    <div>
+      <h3>{application.company}</h3>
+      <p>{application.position}</p>
+      <p>{application.status}</p>
+      <p>{application.date}</p>
+
+      <button>Delete</button>
+    </div>
+  )
+}
+
 function App(){
   const [applications, setApplications] = useState([
   {
@@ -133,12 +152,10 @@ function addApplication(newApplication) {
       <h2>ApplicationsList</h2>
 
       {applications.map((application) => (
-        <div key={application.id}>
-        <h3>{application.company}</h3>
-        <p>{application.position}</p>
-        <p>{application.status}</p>
-        <p>{application.date}</p>
-        </div>
+  <Application
+    key={application.id}
+    application={application}
+  />
 ))}
 
     </div>
